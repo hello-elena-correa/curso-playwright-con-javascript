@@ -55,9 +55,7 @@ test.describe("Login", () => {
 
 test.describe("Login and sort", () => {
     test("Login demo and first price", async ({ page }) => {
-        await test.step("Login", async () => {
-            await login(page);
-        });
+        await login(page);
 
         await test.step("Verify price", async () => {
             await expect(page.locator("(//div[contains(@class, 'inventory_item_price')])[1]")).toHaveText("$29.99")

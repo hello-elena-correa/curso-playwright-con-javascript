@@ -4,6 +4,4 @@ export async function login(page) {
     await page.getByRole("button", { name: "Login" }).click();
 
     await page.screenshot({ path: 'saucedemoportal.png', fullPage: true });
-
-    await expect(await page.getByText("Products")).toBeVisible();
 }

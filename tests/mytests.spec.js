@@ -57,6 +57,8 @@ test.describe("Login and sort", () => {
     test("Login demo and first price", async ({ page }) => {
         await login(page);
 
+        expect(await page.getByText("Products")).toBeVisible();
+
         await test.step("Verify price", async () => {
             await expect(page.locator("(//div[contains(@class, 'inventory_item_price')])[1]")).toHaveText("$29.99")
         });
@@ -64,6 +66,8 @@ test.describe("Login and sort", () => {
 
     test("Login demo order low to high price", async ({ page }) => {
         await login(page);
+
+        expect(await page.getByText("Products")).toBeVisible();
 
         await page.locator(".product_sort_container").selectOption("lohi");
 
@@ -75,6 +79,8 @@ test.describe("Login and sort", () => {
     test("Login demo order high to low price", async ({ page }) => {
         await login(page);
 
+        expect(await page.getByText("Products")).toBeVisible();
+
         await page.locator(".product_sort_container").selectOption("hilo");
 
         await expect(page.locator("(//div[contains(@class, 'inventory_item_price')])[1]")).toHaveText("$49.99")
@@ -84,6 +90,8 @@ test.describe("Login and sort", () => {
 
     test("Login demo order Name DESC", async ({ page }) => {
         await login(page);
+
+        expect(await page.getByText("Products")).toBeVisible();
 
         // key press
         await page.locator(".product_sort_container").press("ArrowDown");

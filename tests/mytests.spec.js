@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { login } = require("./testutils");
+import {login} from "./testutils";
 
 test.beforeAll("Setup", async () => {
     console.log("Starting execution")

@@ -1,4 +1,4 @@
-async function login(page) {
+export async function login(page) {
     await test.step("login", async () => {
         await page.getByRole("textbox", { name: "Username" }).fill("standard_user");
         await page.getByRole("textbox", { name: "Password" }).fill("secret_sauce");

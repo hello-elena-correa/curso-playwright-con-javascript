@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
-import {login} from "./testutils";
+import AxeBuilder from "@axe-core/playwright";
+import { login } from "./testutils";
 
 test.beforeAll("Setup", async () => {
     console.log("Starting execution")
@@ -54,6 +55,15 @@ test.describe("Login", () => {
 })
 
 test.describe("Login and sort", () => {
+
+    test("Accesibility after login", async ({ page }) => {
+        await login(page);
+
+        const results = await new AxeBuilder({ page }).analyze();
+
+        expect(results.violations).toEqual([]);
+    });
+
     test("Login demo and first price", async ({ page }) => {
         await login(page);
 
